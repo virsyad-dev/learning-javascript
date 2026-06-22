@@ -63,14 +63,40 @@ function findStudentById(idSiswa) {
   }
 }
 
+function findStudentByMajor(majorSiswa) {
+  const findMajor = students.find((student) => student.major === majorSiswa);
+
+  if (findMajor) {
+    console.log("Data berhasil ditemukan");
+    console.log(findMajor)
+  } else {
+    console.log("Data tidak Ditemukan");
+  }
+}
+
+function getTotalStundents(allStudents) {
+  console.log(`There are ${allStudents.length} student total`);
+}
+
 const newStudents = [
-  { id: 2, name: "Budi", age: 18, major: "Finance", skills: ["Math"] },
+  { id: 3, name: "Budi", age: 18, major: "Finance", skills: ["Math"] },
   { id: 2, name: "Siti", age: 19, major: "Design", skills: ["UI/UX"] },
   { id: 1, name: "Andi", age: 18, major: "Informatics", skills: ["Python"] },
 ];
 
+console.log("=== DATA SEBELUM DITAMBAH ===");
 displayStudents(students);
 
 addNewStudents(newStudents);
 
-// findStudentById(1)
+console.log("=== DATA SETELAH DITAMBAH ===");
+displayStudents(students);
+
+console.log("=== ID DITEMUKAN ===")
+findStudentById(2)
+
+console.log("=== MAJOR DITEMUKAN ===")
+findStudentByMajor("Finance");
+
+console.log("===Total Student===");
+getTotalStundents(students)
