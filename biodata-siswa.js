@@ -11,14 +11,18 @@ let students = [
 function displayStudents(allStudentData) {
   allStudentData.forEach((studentData) => {
     console.log("=====================");
+    
     console.log("id         :" + studentData.id);
     console.log("name       :" + studentData.name);
     console.log("age        :" + studentData.age);
     console.log("major      :" + studentData.major);
 
-    studentData.skills.forEach((skill) => {
-      console.log("Skills     :" + skill);
+    console.log ("Skills     :")
+
+    studentData.skills.forEach((skill, index) => {
+      console.log(`${index + 1}. ${skill}`);
     });
+
     console.log("=====================");
   });
 }
@@ -27,8 +31,19 @@ function addNewStudent(newStudent) {
   students = [...students, ...newStudent];
 
   console.log(
-    `Berhasil ditambahkan data siswa baru dengan nama "${newStudent.name}" kedalam database`,
-  );
+`Berhasil ditambahkan ${newStudent.length} data siswa baru kedalam database`  );
+}
+
+function findStudentById(idSiswa) {
+  const findId = students.find(student => student.id === idSiswa)
+
+  if (findId) {
+    console.log("Data berhasil ditemukan")
+  } else {
+  console.log("Data tidak Ditemukan");
+  }
+
+  return findId;
 }
 
 const newStudents = [
@@ -37,6 +52,8 @@ const newStudents = [
   { id: 4, name: "Andi", age: 18, major: "Informatics", skills: ["Python"] },
 ];
 
+displayStudents(students);
+
 addNewStudent(newStudents);
 
-displayStudents(students);
+console.log(findStudentById(1));
